@@ -1,0 +1,25 @@
+#!/usr/bin sh
+
+if [ "$#" -ne "1" ]; then
+    echo "Usage: create-site DOMAINNAME"
+else
+	siteFolder=$1
+
+    echo "Creating site folder in /var/www..."'\n'
+	cd /var/www
+	sudo mkdir $siteFolder
+
+	echo "Creating nginx files..."'\n'
+	cd /home/khoi/dns-scripts
+	sh create-nginx $siteFolder
+
+	echo "Creating Cloudflare CNAME DNS Record..."'\n'
+	cd /home/khoi/dns-scripts
+	sh create-dns $siteFolder
+
+	echo "Checking nginx syntax..."'\n'
+	sudo nginx -t
+
+    echo '\n'"Done."
+	echo "Please sudo systemctl restart nginx to activate new site"
+fi
