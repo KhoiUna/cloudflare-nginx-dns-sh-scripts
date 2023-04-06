@@ -11,11 +11,11 @@ else
 
 	echo "Creating nginx files..."'\n'
 	cd /home/khoi/dns-scripts
-	sh create-nginx $siteFolder
+	./create-nginx $siteFolder
 
 	echo "Creating Cloudflare CNAME DNS Record..."'\n'
 	cd /home/khoi/dns-scripts
-	sh create-dns $siteFolder
+	./create-dns $siteFolder
 
 	echo "Checking nginx syntax..."'\n'
 	sudo nginx -t
