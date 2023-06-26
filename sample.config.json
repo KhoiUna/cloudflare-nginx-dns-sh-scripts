@@ -1,5 +1,6 @@
 {
-	"email": "your cloudflare email",
-	"cloudflare_zone": "your cloudflare zone",
-	"cloudflare_dns_api_token": "your cloudflare dns api token"
+  "user_folder": "your user folder",
+  "email": "your cloudflare email",
+  "cloudflare_zone": "your cloudflare zone",
+  "cloudflare_dns_api_token": "your cloudflare dns api token"
 }
