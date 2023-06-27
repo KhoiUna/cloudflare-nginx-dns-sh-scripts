@@ -3,5 +3,5 @@
 if [ "$#" -ne "1" ]; then
         echo "Usage: create-dns NAME"
 else
-	curl -X POST "https://api.cloudflare.com/client/v4/zones/`cat ~/dns-scripts/config.json | jq .cloudflare_zone -r`/dns_records" -H "X-Auth-Email: `cat config.json | jq .email -r`" -H "Content-Type: application/json" -H "Authorization: Bearer `cat config.json | jq .cloudflare_dns_api_token -r`" --data '{"type": "CNAME", "name": "'"$1"'", "content": "dev.khoiuna.info", "ttl": 3600, "proxied": true}'
+	curl -X POST "https://api.cloudflare.com/client/v4/zones/`cat ~/dns-scripts/config.json | jq .cloudflare_zone -r`/dns_records" -H "X-Auth-Email: `cat ~/dns-scripts/config.json |jq .email -r`" -H "Content-Type: application/json" -H "Authorization: Bearer `cat ~/dns-scripts/config.json |jq .cloudflare_dns_api_token -r`" --data '{"type": "CNAME", "name": "'"$1"'", "content": "`cat ~/dns-scripts/config.json | jq .cname_content -r`", "ttl": 3600, "proxied": true}'
 fi
