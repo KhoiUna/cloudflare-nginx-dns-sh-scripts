@@ -6,16 +6,13 @@ else
 	siteFolder=$1
 
     echo "Creating site folder in /var/www..."'\n'
-	cd /var/www
-	sudo mkdir $siteFolder
+	sudo mkdir /var/www/$siteFolder
 
 	echo "Creating nginx files..."'\n'
-	cd `cat config.json |jq .user_folder`/dns-scripts
-	./create-nginx $siteFolder
+	~/dns-scripts/create-nginx $siteFolder
 
-	echo "Creating Cloudflare CNAME DNS Record..."'\n'
-	cd `cat config.json |jq .user_folder`/dns-scripts
-	./create-dns $siteFolder
+	echo "Creating Cloudflare CNAME DNS Record..."'\n'	
+	~/dns-scripts/create-dns $siteFolder
 
 	echo "Checking nginx syntax..."'\n'
 	sudo nginx -t
