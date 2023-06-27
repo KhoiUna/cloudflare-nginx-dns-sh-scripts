@@ -1,5 +1,5 @@
 {
-  "user_folder": "your user folder",
+  "cname_content": "your CNAME",
   "email": "your cloudflare email",
   "cloudflare_zone": "your cloudflare zone",
   "cloudflare_dns_api_token": "your cloudflare dns api token"
